@@ -94,6 +94,22 @@ let routes = [{
             },
         ]
     },
+     {
+         path: '/',
+         component: require('./layouts/tnc/default-page'),
+         meta: {
+             requiresAuth: true,
+             userAuth: false,
+             adminAuth: false,
+             userloginAuth:true
+         },
+         children: [
+             {
+                 path: '/terms',
+                 component: require('./views/student/tnc')
+             },
+         ]
+     },
 
     // {
     //     path: '/',
@@ -179,6 +195,11 @@ router.beforeEach((to, from, next) => {
             } else if (to.matched.some(m => m.meta.userAuth)) {
                 return helper.authUser().then(res => {
                     if (res.type == "STUDENT") {
+                        if (res.form_status == "N.A.") {
+                            return next({
+                                path:'/terms'
+                            })
+                        }
                         return next()
                     } else {
                         return next({
@@ -186,6 +207,22 @@ router.beforeEach((to, from, next) => {
                         })
                     }
                 })
+            }
+                else if (to.matched.some(m => m.meta.userloginAuth)) {
+                    return helper.authUser().then(res => {
+                        if (res.type == "STUDENT" ) {
+                            if ( res.form_status == "N.A.") {
+                                return next()
+                            }
+                            return next({
+                                path:'/userlogin'
+                            })
+                        } else {
+                            return next({
+                                path: '/home'
+                            })
+                        }
+                    })
             } else {
                 return next()
             }

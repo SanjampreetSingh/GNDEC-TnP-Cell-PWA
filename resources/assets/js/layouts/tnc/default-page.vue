@@ -1,7 +1,6 @@
 <template>
     <div id="main-wrapper">
         <app-header></app-header>
-        <app-sidebar></app-sidebar>
 
         <div class="page-wrapper">
             <div class="container-fluid">
@@ -16,7 +15,6 @@
 
 <script>
     import AppHeader from './header.vue'
-    import AppSidebar from './sidebar.vue'
     import AppFooter from './footer.vue'
     import AppRightSidebar from './right-sidebar.vue'
     import helper from './../../services/helper'
@@ -37,7 +35,7 @@
             }
         },
         components: {
-            AppHeader, AppSidebar, AppFooter, AppRightSidebar
+            AppHeader, AppFooter, AppRightSidebar
         },
         mounted() {
             $('body').addClass("fix-header fix-sidebar card-no-border");

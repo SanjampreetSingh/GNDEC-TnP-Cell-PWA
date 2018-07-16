@@ -3,7 +3,7 @@
         <div class="scroll-sidebar">
             <div class="user-profile">
                 <div class="profile-img"> <img :src="getAvatar" alt="user" /> </div>
-                <div class="profile-text"><a href="#">{{getAuthUserFullName()}}</a>
+                <div class="profile-text"><a href="#">{{getAuthUsername()}}</a>
                 </div>
             </div>
             <nav class="sidebar-nav">
@@ -18,7 +18,7 @@
                         <router-link to="/user" exact><i class="fa fa-users"></i> <span class="hide-menu">User</span></router-link>
                     </li> -->
                     <li>
-                        <router-link to="/post" exact><i class="fa fa-post"></i> <span class="hide-menu">Post</span></router-link>
+                        <router-link to="/terms" exact><i class="fa fa-post"></i> <span class="hide-menu">Post</span></router-link>
                     </li>
                     <!-- <li>
                         <router-link to="/anything" exact><i class="fa fa-exclamation-triangle"></i> <span class="hide-menu">Error Page</span></router-link>
@@ -54,8 +54,8 @@
                     this.$router.replace('/login')
                 })
             },
-            getAuthUserFullName(){
-                return this.$store.getters.getAuthUserFullName;
+            getAuthUsername(){
+                return this.$store.getters.getAuthUsername;
             },
             getAuthUser(name){
                 return this.$store.getters.getAuthUser(name);

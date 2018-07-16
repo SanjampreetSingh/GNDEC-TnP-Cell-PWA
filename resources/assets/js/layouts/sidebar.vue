@@ -5,7 +5,7 @@
                 <div class="profile-img">
                     <img src="../../images/users/user.jpg" alt="user" /> </div>
                 <div class="profile-text">
-                    <a href="#">{{getAuthUserFullName()}}</a>
+                    <a href="#">{{getAuthUsername()}}</a>
                 </div>
             </div>
             <nav class="sidebar-nav">
@@ -151,8 +151,8 @@
                     this.$router.replace('/login')
                 })
             },
-            getAuthUserFullName() {
-                return this.$store.getters.getAuthUserFullName;
+            getAuthUsername() {
+                return this.$store.getters.getAuthUsername;
             },
             getAuthUser(name) {
                 return this.$store.getters.getAuthUser(name);
